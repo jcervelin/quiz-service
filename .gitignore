@@ -1,15 +1,15 @@
 .gradle
 /build/
-!gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
-.classpath
+#.classpath
 .factorypath
-.project
-.settings
+#.project
+#.settings
 .springBeans
 *.log
+bin/
 
 ### IntelliJ IDEA ###
 .idea
