@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      database: quiz
+      host: localhost
+      port: 27017
+  application:
+    name: quiz-service
+server.port: 8082
