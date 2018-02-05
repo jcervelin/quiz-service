@@ -1,15 +1,21 @@
 spring:
   data:
     mongodb:
-      database: ${MONGO_DATABASE}
-      host: ${MONGO_HOST}
-      port: ${MONGO_PORT}
-      username: ${MONGO_USER}
-      password: ${MONGO_PASS}
+      uri: ${MONGODB_URI}
   application:
     name: quiz-service
-server.port: 8082
+#server.port: 8082
 
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+    io:
+      jcervelin:
+        ideas: DEBUG
+  file: quiz-service.log
 
 #eureka.client.service-url.defaultZone=http://localhost:8761/eureka
 
