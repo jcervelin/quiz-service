@@ -6,7 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +20,7 @@ import io.jcervelin.ideas.service.QuizServiceService;
 
 @RestController
 @RequestMapping("/quizes")
+@CrossOrigin(origins = "http://localhost:3000"/*, maxAge = 3600*/)
 public class QuizServiceController {
 	
 	private QuizServiceService service;
@@ -42,9 +46,10 @@ public class QuizServiceController {
 		return allStates();
 	}
 	
-	@GetMapping("/result")
-	public Float result (Quiz quizAnswered) {
-		Float result = service.calculateResult(quizAnswered);
+	@PostMapping("/result")
+	public Float result (@RequestBody Quiz quiz) {
+		System.out.println("quizAnswered: "+ quiz);
+		Float result = service.calculateResult(quiz);
 		return result;
 	}
 

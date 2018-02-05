@@ -39,7 +39,8 @@ public class QuizServiceServiceImpl implements QuizServiceService{
 	}
 
 	public float calculateResult(Quiz quizAnswered) {
-		Quiz quiz = entityToQuiz(repo.findById(new ObjectId(quizAnswered.getId())).get());
+		points = 0f;
+		Quiz quiz = entityToQuiz(repo.findBy_id(new ObjectId(quizAnswered.getId())));
 		List<Question> questions = quiz.getQuestions().stream().sorted(Comparator.comparing(qe -> qe.getName())).collect(toList());
 		List<Question> questionsAnswered = quizAnswered.getQuestions().stream().sorted(Comparator.comparing(qe -> qe.getName())).collect(toList());
 		
