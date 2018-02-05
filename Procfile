@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* -Dserver.port=$PORT io/jcervelin/ideas/QuizServiceApplication
+web java -Dserver.port=$PORT $JAVA_OPTS -jar target/cadastro-cliente-web-0.0.1-SNAPSHOT.war -Dspring.profiles.active=heroku
