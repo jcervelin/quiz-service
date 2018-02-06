@@ -1,1 +1,1 @@
-web java -Dserver.port=$PORT $JAVA_OPTS -jar target/quiz-service-0.0.1-SNAPSHOT.war -Dspring.profiles.active=heroku
+jar java -Dserver.port=$PORT $JAVA_OPTS -jar target/quiz-service-0.0.1-SNAPSHOT.jar -Dspring.profiles.active=heroku

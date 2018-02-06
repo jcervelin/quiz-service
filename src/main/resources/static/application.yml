@@ -1,0 +1,32 @@
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+    io:
+      jcervelin:
+        ideas: DEBUG
+  file: quiz-service.log
+
+#eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+spring:
+  data:
+    mongodb:
+      database: quiz
+      host: localhost
+      port: 27017
+  application:
+    name: quiz-service
+server.port: 8082
+
+
+#eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
+#pelo zuul http://localhost:8080/quiz-service/quizes/answers?states=SP         
