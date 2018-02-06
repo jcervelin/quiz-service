@@ -5,7 +5,7 @@
 	<artifactId>quiz-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>quiz-service</name>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
