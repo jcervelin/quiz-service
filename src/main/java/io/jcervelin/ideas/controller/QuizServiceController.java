@@ -20,7 +20,7 @@ import io.jcervelin.ideas.service.QuizServiceService;
 
 @RestController
 @RequestMapping("/quizes")
-@CrossOrigin(origins = {"http://localhost:3000", "pure-sands-30473.herokuapp.com/:1"})
+@CrossOrigin(origins = "*")
 public class QuizServiceController {
 	
 	private QuizServiceService service;
