@@ -1,18 +1,19 @@
 package io.jcervelin.ideas.service;
 
-import static io.jcervelin.ideas.entities.Converter.entityToQuiz;
-import static java.util.stream.Collectors.toList;
-
-import java.util.Comparator;
-import java.util.List;
-
+import io.jcervelin.ideas.entities.Alternative;
+import io.jcervelin.ideas.entities.Converter;
+import io.jcervelin.ideas.entities.Question;
+import io.jcervelin.ideas.entities.Quiz;
+import io.jcervelin.ideas.repository.QuizServiceRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.jcervelin.ideas.entities.Question;
-import io.jcervelin.ideas.entities.Quiz;
-import io.jcervelin.ideas.repository.QuizServiceRepository;
+import java.util.Comparator;
+import java.util.List;
+
+import static io.jcervelin.ideas.entities.Converter.entityToQuiz;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class QuizServiceServiceImpl implements QuizServiceService{
@@ -28,7 +29,7 @@ public class QuizServiceServiceImpl implements QuizServiceService{
 	public List<Quiz> findByStates(List<String> states) {
 		
 		
-		return repo.findByStates(states).stream().map(qe -> entityToQuiz(qe)).collect(toList());
+		return repo.findByStates(states).stream().map(Converter::entityToQuiz).collect(toList());
 	}
 	
 	public List<Quiz> removeAnswers(List<Quiz> quizes) {
@@ -41,13 +42,13 @@ public class QuizServiceServiceImpl implements QuizServiceService{
 	public float calculateResult(Quiz quizAnswered) {
 		points = 0f;
 		Quiz quiz = entityToQuiz(repo.findBy_id(new ObjectId(quizAnswered.getId())));
-		List<Question> questions = quiz.getQuestions().stream().sorted(Comparator.comparing(qe -> qe.getName())).collect(toList());
-		List<Question> questionsAnswered = quizAnswered.getQuestions().stream().sorted(Comparator.comparing(qe -> qe.getName())).collect(toList());
+		List<Question> questions = quiz.getQuestions().stream().sorted(Comparator.comparing(Question::getName)).collect(toList());
+		List<Question> questionsAnswered = quizAnswered.getQuestions().stream().sorted(Comparator.comparing(Question::getName)).collect(toList());
 		
 		questions.forEach(qe -> 
 			questionsAnswered.forEach(qw ->{
-				if (qe.getAlternatives().stream().filter(alt -> alt.isCorrect()).findFirst()
-						.equals(qw.getAlternatives().stream().filter(altw -> altw.isCorrect()).findFirst()))
+				if (qe.getAlternatives().stream().filter(Alternative::isCorrect).findFirst()
+						.equals(qw.getAlternatives().stream().filter(Alternative::isCorrect).findFirst()))
 					points++;
 			})
 		);
