@@ -3,21 +3,21 @@ package io.jcervelin.ideas;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 
 @SpringBootApplication
-@EnableDiscoveryClient
-public class QuizServiceApplication implements CommandLineRunner{
+@EnableEurekaClient
+public class QuizServiceApplication implements CommandLineRunner {
 	/*@Autowired
 	private QuizServiceRepository repo;*/
 
-	public static void main(String[] args) {
-		SpringApplication.run(QuizServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(QuizServiceApplication.class, args);
+    }
 
-	@Override
-	public void run(String... arg0) throws Exception {
+    @Override
+    public void run(String... arg0) throws Exception {
 		/*QuizEntity q1 = new QuizEntity();
 		q1 = new QuizEntity();
 		q1.setName("Enquete sobre Atualidades");
@@ -116,6 +116,6 @@ public class QuizServiceApplication implements CommandLineRunner{
 		states1.add(new State(StateEnum.SC));
 		q2.setStates(states1);
 		returnetList.add(q2);
-		repo.save(returnetList);*/		
-	}
+		repo.save(returnetList);*/
+    }
 }
