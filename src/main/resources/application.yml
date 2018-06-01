@@ -1,7 +1,7 @@
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: https://jcervelin-eureka.herokuapp.com/eureka
   instance:
