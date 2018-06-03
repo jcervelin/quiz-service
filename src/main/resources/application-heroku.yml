@@ -1,0 +1,19 @@
+spring:
+  data:
+    mongodb:
+      database: ${MONGO_DATABASE}
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      username: ${MONGO_USER}
+      password: ${MONGO_PASS}
+  application:
+    name: quiz-service
+  profiles:
+    active: heroku
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+      
+#pelo zuul http://localhost:8080/quiz-service/quizes/answers?states=SP      
